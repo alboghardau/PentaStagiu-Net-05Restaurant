@@ -8,6 +8,5 @@ namespace MenuLibrary
     {
         public int Calories { get; set; }
 
-
     }
 }

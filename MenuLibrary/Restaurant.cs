@@ -8,7 +8,6 @@ namespace MenuLibrary
     {
         List<MenuItem> Items;
         
-
         public Restaurant()
         {
             this.Items = new List<MenuItem>();
@@ -23,9 +22,24 @@ namespace MenuLibrary
 
         }
 
+        public List<MenuItem> GetAllItems()
+        {
+            return this.Items;
+        }
+
+        public MenuItem GetItemById(int id)
+        {
+            return this.Items.Find( item => item.Id.Equals(id));
+        }
+
+        public int GetTotalItems()
+        {
+            return this.Items.Count;
+        }
+
         public void RemoveItem(MenuItem item)
         {
-
+            this.Items.Remove(item);
         }
     }
 }
