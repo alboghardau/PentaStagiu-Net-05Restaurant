@@ -6,6 +6,6 @@ namespace MenuLibrary
 {
     class VegBurger : Burger
     {
-
+        private bool HasOnion;
     }
 }

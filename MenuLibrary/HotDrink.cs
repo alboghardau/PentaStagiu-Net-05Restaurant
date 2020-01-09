@@ -6,6 +6,6 @@ namespace MenuLibrary
 {
     class HotDrink : Drink
     {
-
+        private bool HasCaffeine;
     }
 }

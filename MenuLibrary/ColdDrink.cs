@@ -6,6 +6,6 @@ namespace MenuLibrary
 {
     class ColdDrink : Drink
     {
-
+        private bool HasSugar;
     }
 }

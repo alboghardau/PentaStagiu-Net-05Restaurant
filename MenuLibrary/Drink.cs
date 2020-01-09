@@ -6,6 +6,6 @@ namespace MenuLibrary
 {
     class Drink : MenuItem
     {
-
+        private int Quantity;
     }
 }

@@ -6,5 +6,6 @@ namespace MenuLibrary
     {
         private string Name;
         private double Price;
+
     }
 }
