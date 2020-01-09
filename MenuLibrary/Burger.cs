@@ -6,6 +6,8 @@ namespace MenuLibrary
 {
     class Burger : MenuItem
     {
-        private int Calories;
+        public int Calories { get; set; }
+
+
     }
 }

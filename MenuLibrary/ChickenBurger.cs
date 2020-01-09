@@ -6,6 +6,6 @@ namespace MenuLibrary
 {
     class ChickenBurger : Burger
     {
-        private bool HasPickle;
+        public bool HasPickle { get; set; }
     }
 }

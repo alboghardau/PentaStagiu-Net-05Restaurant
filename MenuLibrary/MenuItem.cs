@@ -4,8 +4,8 @@ namespace MenuLibrary
 {
     public class MenuItem
     {
-        private string Name;
-        private double Price;
+        public string Name { get; set; }
+        public double Price { get; set; }
 
     }
 }
