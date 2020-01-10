@@ -19,7 +19,8 @@ namespace MenuLibrary
 
         public void EditItem(MenuItem oldItem, MenuItem newItem)
         {
-
+            this.RemoveItem(oldItem.Id);
+            this.AddItem(newItem);
         }
 
         public List<MenuItem> GetAllItems()

@@ -26,11 +26,20 @@ namespace Tema05
 
                 switch (command)
                 {
+                    case "add":
+                        AddItem();
+                        break;
                     case "delete":
                         DeleteItem();
                         break;
+                    case "edit":
+                        EditItem();
+                        break;
                     case "list":
                         DisplayItems();
+                        break;
+                    case "find":
+                        FindItem();
                         break;
                     case "exit":
                         return;
@@ -42,11 +51,131 @@ namespace Tema05
             }
         }
 
+        //add new item  //lazy implementation
         static void AddItem()
         {
-            
+            try
+            {
+                Console.WriteLine("Item Types:  cburger | vburger | colddrink | hotdrink");
+                Console.Write("Item Type:");
+                String type = Console.ReadLine();
+                MenuItem item;
+
+                switch (type)
+                {
+                    case "cburger":
+                        item = new ChickenBurger();
+                        break;
+                    case "vburger":
+                        item = new VegBurger();
+                        break;
+                    case "colddrink":
+                        item = new ColdDrink();
+                        break;
+                    case "hotdrink":
+                        item = new HotDrink();
+                        break;
+                    default:
+                        Console.WriteLine("Wrong type of item!");
+                        return;
+                }
+
+                if (item.GetType().GetProperty("Name") != null)
+                {
+                    Console.Write("Name:");
+                    var property = item.GetType().GetProperty("Name");
+                    property.SetValue(item, Console.ReadLine());
+                }
+
+                if (item.GetType().GetProperty("Price") != null)
+                {
+                    Console.Write("Price:");
+                    var property = item.GetType().GetProperty("Price");
+                    property.SetValue(item, double.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("Calories") != null)
+                {
+                    Console.Write("Calories:");
+                    var property = item.GetType().GetProperty("Calories");
+                    property.SetValue(item,int.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("HasPickle") != null)
+                {
+                    Console.Write("Has Pickle:");
+                    var property = item.GetType().GetProperty("HasPickle");
+                    property.SetValue(item, bool.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("HasOnion") != null)
+                {
+                    Console.Write("Has Onion:");
+                    var property = item.GetType().GetProperty("HasOnion");
+                    property.SetValue(item, bool.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("Volume") != null)
+                {
+                    Console.Write("Volume:");
+                    var property = item.GetType().GetProperty("Volume");
+                    property.SetValue(item, int.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("HasCaffeine") != null)
+                {
+                    Console.Write("Has Caffeine:");
+                    var property = item.GetType().GetProperty("HasCaffeine");
+                    property.SetValue(item, bool.Parse(Console.ReadLine()));
+                }
+
+                if (item.GetType().GetProperty("HasSugar") != null)
+                {
+                    Console.Write("Has Sugar:");
+                    var property = item.GetType().GetProperty("Has Sugar");
+                    property.SetValue(item, bool.Parse(Console.ReadLine()));
+                }
+
+                restaurant.AddItem(item);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Wrong input!");
+                Console.WriteLine(e.ToString());
+            }
         }
 
+        //using reflection implementation, less code than AddItem()
+        static void EditItem()
+        {
+            Console.Write("ID:");
+            try
+            {
+                int id = int.Parse(Console.ReadLine());
+                MenuItem oldItem = restaurant.GetItemById(id);
+                MenuItem item = oldItem;
+                
+                foreach (var prop in item.GetType().GetProperties())
+                {
+                    if (prop.Name.Equals("Id"))
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("Old {0}={1}", prop.Name, prop.GetValue(item, null));
+                    Console.Write("New {0}=", prop.Name);
+                    prop.SetValue(item, ParseAnyObject(Console.ReadLine()));
+                }
+
+                restaurant.EditItem(oldItem, item);
+            }
+            catch (Exception e)
+            {               
+                Console.WriteLine("Wrong input!");
+                Console.WriteLine(e.Message.ToString());
+            }
+        }
+
+        //deletes an item by id
         static void DeleteItem()
         {
             Console.Write("ID:");
@@ -67,10 +196,12 @@ namespace Tema05
             Console.Write("ID:");
             try
             {
-
-            }catch(Exception e)
+                int id = int.Parse(Console.ReadLine());
+                Console.WriteLine(restaurant.GetItemById(id).ToString());
+            }
+            catch(Exception e)
             {
-
+                Console.WriteLine("Wrong input!");
             }
         }
 
@@ -103,6 +234,46 @@ namespace Tema05
             d.Volume = 250;
             d.HasCaffeine = true;
             restaurant.AddItem(d);
+
+            ColdDrink e = new ColdDrink();
+            e.Name = "Beer";
+            e.Price = 10;
+            e.Volume = 250;
+            e.HasSugar = true;
+            restaurant.AddItem(e);
+        }
+
+        //helper function to parse any kind of object i need   int | double | bool
+        private static object ParseAnyObject(String s)
+        {
+            try
+            {
+                return int.Parse(s);
+            }
+            catch(Exception e)
+            {
+
+            }
+
+            try
+            {
+                return double.Parse(s);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            try
+            {
+                return bool.Parse(s);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return s;
         }
     }
 }

@@ -13,7 +13,8 @@ namespace MenuLibrary
             return  "ID: "+this.Id+" "+
                     "NAME: "+this.Name+" "+
                     "PRICE: "+this.Price+" "+
-                    "CALORIES: "+this.Calories
+                    "CALORIES: "+this.Calories+" "+
+                    "HAS PICKLE:" + this.HasPickle
                 ;
         }
     }
