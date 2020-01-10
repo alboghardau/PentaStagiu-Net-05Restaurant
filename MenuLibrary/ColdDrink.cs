@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    class ColdDrink : Drink
+    public class ColdDrink : Drink
     {
         public bool HasSugar { get; set; }
     }

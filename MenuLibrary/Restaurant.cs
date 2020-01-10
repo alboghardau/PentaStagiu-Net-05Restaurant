@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    class Restaurant : IRestaurant
+    public class Restaurant : IRestaurant
     {
         List<MenuItem> Items;
         
@@ -29,7 +29,7 @@ namespace MenuLibrary
 
         public MenuItem GetItemById(int id)
         {
-            return this.Items.Find( item => item.Id.Equals(id));
+            return this.Items.Find(item => item.Id.Equals(id));
         }
 
         public int GetTotalItems()
@@ -37,9 +37,11 @@ namespace MenuLibrary
             return this.Items.Count;
         }
 
-        public void RemoveItem(MenuItem item)
+        public void RemoveItem(int id)
         {
+            MenuItem item = this.GetItemById(id);
             this.Items.Remove(item);
         }
+
     }
 }

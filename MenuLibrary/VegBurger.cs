@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    class VegBurger : Burger
+    public class VegBurger : Burger
     {
         public bool HasOnion { get; set; }
     }

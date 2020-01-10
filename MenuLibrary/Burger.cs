@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    class Burger : MenuItem
+    public class Burger : MenuItem
     {
         public int Calories { get; set; }
 

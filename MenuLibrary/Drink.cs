@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    class Drink : MenuItem
+    public class Drink : MenuItem
     {
-        public int Quantity { get; set; }
+        public int Volume { get; set; }
     }
 }
