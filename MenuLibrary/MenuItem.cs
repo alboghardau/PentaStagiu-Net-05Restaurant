@@ -2,10 +2,11 @@
 
 namespace MenuLibrary
 {
-    public class MenuItem
+    public class MenuItem : IComparable<MenuItem>
     {
+        //id setter to avoid crash on serialization
         private static int counter = 0;
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
 
@@ -19,6 +20,12 @@ namespace MenuLibrary
         public MenuItem(int id)
         {
             this.Id = id;
+        }
+
+        //sort items by ID
+        public int CompareTo(MenuItem other)
+        {
+            return this.Id.CompareTo(other.Id);
         }
     }
 }

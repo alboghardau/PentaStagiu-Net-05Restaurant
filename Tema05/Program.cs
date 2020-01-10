@@ -80,60 +80,14 @@ namespace Tema05
                         return;
                 }
 
-                if (item.GetType().GetProperty("Name") != null)
+                foreach (var prop in item.GetType().GetProperties())
                 {
-                    Console.Write("Name:");
-                    var property = item.GetType().GetProperty("Name");
-                    property.SetValue(item, Console.ReadLine());
-                }
-
-                if (item.GetType().GetProperty("Price") != null)
-                {
-                    Console.Write("Price:");
-                    var property = item.GetType().GetProperty("Price");
-                    property.SetValue(item, double.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("Calories") != null)
-                {
-                    Console.Write("Calories:");
-                    var property = item.GetType().GetProperty("Calories");
-                    property.SetValue(item,int.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("HasPickle") != null)
-                {
-                    Console.Write("Has Pickle:");
-                    var property = item.GetType().GetProperty("HasPickle");
-                    property.SetValue(item, bool.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("HasOnion") != null)
-                {
-                    Console.Write("Has Onion:");
-                    var property = item.GetType().GetProperty("HasOnion");
-                    property.SetValue(item, bool.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("Volume") != null)
-                {
-                    Console.Write("Volume:");
-                    var property = item.GetType().GetProperty("Volume");
-                    property.SetValue(item, int.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("HasCaffeine") != null)
-                {
-                    Console.Write("Has Caffeine:");
-                    var property = item.GetType().GetProperty("HasCaffeine");
-                    property.SetValue(item, bool.Parse(Console.ReadLine()));
-                }
-
-                if (item.GetType().GetProperty("HasSugar") != null)
-                {
-                    Console.Write("Has Sugar:");
-                    var property = item.GetType().GetProperty("Has Sugar");
-                    property.SetValue(item, bool.Parse(Console.ReadLine()));
+                    if (prop.Name.Equals("Id"))
+                    {
+                        continue;
+                    }
+                    Console.Write("{0}=", prop.Name);
+                    prop.SetValue(item, ParseAnyObject(Console.ReadLine()));
                 }
 
                 restaurant.AddItem(item);

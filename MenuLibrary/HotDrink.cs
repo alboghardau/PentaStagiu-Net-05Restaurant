@@ -6,7 +6,6 @@ namespace MenuLibrary
 {
     public class HotDrink : Drink
     {
-
         public bool HasCaffeine { get; set; }
                 
         public override string ToString()

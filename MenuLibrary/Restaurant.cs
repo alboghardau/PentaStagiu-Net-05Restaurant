@@ -10,9 +10,12 @@ namespace MenuLibrary
         
         public Restaurant()
         {
-            this.Items = new List<MenuItem>();
+                this.Items = new List<MenuItem>();       
         }
-        public void AddItem(MenuItem item)
+
+
+    //methods
+    public void AddItem(MenuItem item)
         {
             this.Items.Add(item);
         }
@@ -25,6 +28,7 @@ namespace MenuLibrary
 
         public List<MenuItem> GetAllItems()
         {
+            this.Items.Sort();
             return this.Items;
         }
 
@@ -43,6 +47,5 @@ namespace MenuLibrary
             MenuItem item = this.GetItemById(id);
             this.Items.Remove(item);
         }
-
     }
 }
