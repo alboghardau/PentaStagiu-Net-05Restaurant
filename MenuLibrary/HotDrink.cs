@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MenuLibrary
 {
-    public class HotDrink : Drink
+        public class HotDrink : Drink
     {
         public bool HasCaffeine { get; set; }
                 

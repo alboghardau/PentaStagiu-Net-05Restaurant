@@ -9,11 +9,10 @@ namespace MenuLibrary
         List<MenuItem> Items;
         
         public Restaurant()
-        {
-                this.Items = new List<MenuItem>();       
+        { 
+                this.Items = new List<MenuItem>();
         }
-
-
+        
     //methods
     public void AddItem(MenuItem item)
         {

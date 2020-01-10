@@ -16,12 +16,6 @@ namespace MenuLibrary
             this.Id = counter++;
         }
 
-        //contructor overloading for Id setter on inistantiate
-        public MenuItem(int id)
-        {
-            this.Id = id;
-        }
-
         //sort items by ID
         public int CompareTo(MenuItem other)
         {
